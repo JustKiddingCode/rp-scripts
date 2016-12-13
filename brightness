@@ -1,0 +1,8 @@
+#!/bin/bash
+xwait="/home/justkidding/git/xwait/xwait"
+
+while :; do
+	brightness=$(light -G| sed 's/\..*//')
+	printf "\fBrightness: %s%%" "$brightness" 
+	sleep 60; 	
+done | $xwait ~/git/xecho/xecho -stdin

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while :; 
+do 	
+	dynamic=$(amixer -c 1 get Master | egrep -so '\[[0-9]{1,3}\%\]|\[off\]' | tr -d '\n' | sed 's,\]\[,\|,g' | sed 's,.*off.*,Muted,g')
+	printf "\fVol: %s" $dynamic
+	sleep 3; 
+done | ~/git/xecho/xecho -stdin

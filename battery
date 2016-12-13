@@ -1,0 +1,8 @@
+#!/bin/bash
+xwait="/home/justkidding/git/xwait/xwait"
+
+while :; do
+	battery=$(echo $(acpi) | sed 's,Battery 0: ,,g')
+	printf "\f%s" "$battery" 
+	sleep 60; 	
+done | $xwait ~/git/xecho/xecho -stdin

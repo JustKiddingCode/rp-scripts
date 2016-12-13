@@ -1,0 +1,23 @@
+#!/bin/bash
+while true; do
+
+percent=$(acpi -b | grep -oP '(?<=Discharging, )[0-9]{1,3}(?=%)')
+
+if [[ -z "$percent" ]]; then
+	sleep 60;
+	continue;
+fi
+
+if [ $percent -le 10 ]; then
+  for (( i=0; i < 5; i++))
+  	do
+	beep -f 2000;
+	sleep 0.1;
+	done;
+
+  if [ $percent -le 5 ]; then
+    sudo shutdown -h +1
+  fi
+fi
+sleep 60;
+done;

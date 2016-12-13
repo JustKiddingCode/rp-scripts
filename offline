@@ -1,0 +1,13 @@
+#!/bin/sh
+while :; 
+do 
+	/bin/ping -c 1 google.de 2>&1 > /dev/null
+	if [ $? -eq 0 ]
+	then 
+		printf "\fONLINE"
+	else 
+		printf "\fOFFLINE"
+	fi 
+	sleep 30
+done | ~/git/xecho/xecho -stdin
+
