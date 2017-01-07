@@ -17,6 +17,6 @@ Other software:
 
 Contributions are welcome, so are questions
 
-[1] https://github.com/cbdevnet/xecho
-[2] https://github.com/fsmi/xwait
-[3] https://github.com/haikarainen/light
+* [1] https://github.com/cbdevnet/xecho
+* [2] https://github.com/fsmi/xwait
+* [3] https://github.com/haikarainen/light
