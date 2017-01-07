@@ -1,0 +1,8 @@
+#!/bin/bash
+while :; 
+	do 
+		display=$(date "+%a %d.%b %H:%M")
+		seconds=$( date '+%S' )
+		printf "\f%s" "$display"
+		sleep $(( 61 - $seconds ))
+	done | ~/git/xecho/xecho -stdin

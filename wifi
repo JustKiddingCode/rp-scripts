@@ -1,0 +1,9 @@
+xecho=~/git/xecho/xecho
+
+while :;
+	do
+		status=$(/usr/sbin/rfkill list wifi | head -n 2 | tail -n 1 | sed 's,\t,,g' |sed 's,^,Wifi ,g')
+		printf "\f %s" "$status"
+		sleep 60
+	done | $xecho -stdin
+
