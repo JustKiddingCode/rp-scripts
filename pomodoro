@@ -4,9 +4,11 @@ function restart () {
 	act=$(date +%s)
 	to=$(expr $act + 1200)
 	oldframe=$(ratpoison -c "curframe")
-	ratpoison -c "fselect 4"
-	$0 $to &
+	ratpoison -c "gselect xecho"
+	ratpoison -c "fselect $FRAME"
+	$0 $to $FRAME &
 	~/git/xwait/xwait
+	ratpoison -c "gselect default"
 	ratpoison -c "fselect $oldframe"
 	exit 0
 }
@@ -14,13 +16,14 @@ function restart () {
 trap restart USR1
 
 TO_DATE=${1:-`date +%s`}
+FRAME=${2:-`ratpoison -c "curframe"`}
 
 while :;
 do
 	output=""
 	if [[ "$TO_DATE" -gt `date +%s` ]]
 	then
-     output=$(date -u --date @$(($TO_DATE - `date +%s`)) +%M:%S)
+		output=$(date -u --date @$(($TO_DATE - `date +%s`)) +%M:%S)
 	fi
 	printf "\f%s" "$output"
 	sleep 0.5
